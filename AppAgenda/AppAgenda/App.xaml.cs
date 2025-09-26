@@ -1,8 +1,10 @@
-﻿namespace AppAgenda;
+﻿using AppAgenda.Services;
+
+namespace AppAgenda;
 
 public partial class App : Application
 {
-	public App()
+	public App(IAgendaService agendaService)
 	{
 		InitializeComponent();
 
