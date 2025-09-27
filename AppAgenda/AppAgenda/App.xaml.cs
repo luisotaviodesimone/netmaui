@@ -1,4 +1,5 @@
-﻿using AppAgenda.Services;
+﻿using AppAgenda.MVVM.Views;
+using AppAgenda.Services;
 
 namespace AppAgenda;
 
@@ -8,6 +9,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new NavigationPage(new AgendaView(agendaService));
 	}
 }
