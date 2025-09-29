@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppAgenda", "AppAgenda\AppAgenda.csproj", "{50905CF2-D682-4CA8-94E3-9A1242C11B14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSqlite", "..\AppSqlite\AppSqlite\AppSqlite.csproj", "{774FB5D8-AC68-4ADE-8A23-140DFED965A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{50905CF2-D682-4CA8-94E3-9A1242C11B14}.Release|x64.Build.0 = Release|Any CPU
 		{50905CF2-D682-4CA8-94E3-9A1242C11B14}.Release|x86.ActiveCfg = Release|Any CPU
 		{50905CF2-D682-4CA8-94E3-9A1242C11B14}.Release|x86.Build.0 = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|x64.Build.0 = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Debug|x86.Build.0 = Debug|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|x64.ActiveCfg = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|x64.Build.0 = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|x86.ActiveCfg = Release|Any CPU
+		{774FB5D8-AC68-4ADE-8A23-140DFED965A7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
