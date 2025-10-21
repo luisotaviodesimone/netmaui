@@ -29,6 +29,16 @@ public partial class ViewExercises : ContentPage
 		TodayCountLabel.Text = list.Count.ToString();
 	}
 
+	private async Task LoadAllExercisesAsync()
+	{
+		_selectedDate = FilterDatePicker.Date.Date;
+		var list = await MainPage.Database.GetExercisesAsync();
+		ExercisesListView.ItemsSource = list;
+
+		// Atualiza o contador para a data selecionada
+		TodayCountLabel.Text = list.Count.ToString();
+	}
+
 	private async void OnDateSelected(object sender, DateChangedEventArgs e)
 	{
 		_selectedDate = e.NewDate.Date;
@@ -39,7 +49,7 @@ public partial class ViewExercises : ContentPage
 	{
 		FilterDatePicker.Date = DateTime.Today;
 		_selectedDate = DateTime.Today;
-		await LoadExercisesAsync();
+		await LoadAllExercisesAsync();
 	}
 
 }

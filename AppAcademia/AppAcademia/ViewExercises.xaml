@@ -45,7 +45,7 @@
                         <DatePicker x:Name="FilterDatePicker"
                                     DateSelected="OnDateSelected"/>
                         <Button Grid.Column="1"
-                                Text="Hoje"
+                                Text="Todos"
                                 Clicked="OnTodayClicked"
                                 FontAttributes="Bold"
                                 BackgroundColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource Gray900}}"
