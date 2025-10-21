@@ -12,15 +12,15 @@
                    FontSize="28"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="{AppThemeBinding Light=#1565C0, Dark=#90CAF9}"
+                   TextColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}"
                    Margin="0,10,0,20"/>
 
             <!-- Card do Formulário -->
-            <Frame BorderColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}"
+            <Frame BorderColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray900}}"
                    CornerRadius="12"
                    Padding="20"
                    HasShadow="True"
-                   BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}">
+                   BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}">
                 <VerticalStackLayout Spacing="18">
 
                     <!-- Tipo de Exercício -->
@@ -28,13 +28,13 @@
                         <Label Text="Tipo de Exercício"
                                FontSize="15"
                                FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light=#0D47A1, Dark=#90CAF9}"/>
+                               TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                         <Entry x:Name="ExerciseTypeEntry"
                                Placeholder="Ex: Supino, Agachamento, Flexão..."
-                               PlaceholderColor="{AppThemeBinding Light=#90CAF9, Dark=#90CAF9}"
+                               PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
                                FontSize="16"
-                               TextColor="{AppThemeBinding Light=#212121, Dark=#E0E0E0}"
-                               BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0F172A}"/>
+                               TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"/>
                     </VerticalStackLayout>
 
                     <!-- Grid para Repetições e Carga -->
@@ -46,14 +46,14 @@
                             <Label Text="Repetições"
                                    FontSize="15"
                                    FontAttributes="Bold"
-                                   TextColor="{AppThemeBinding Light=#0D47A1, Dark=#90CAF9}"/>
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                             <Entry x:Name="RepetitionsEntry"
                                    Placeholder="0"
                                    Keyboard="Numeric"
-                                   PlaceholderColor="{AppThemeBinding Light=#90CAF9, Dark=#90CAF9}"
+                                   PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
                                    FontSize="16"
-                                   TextColor="{AppThemeBinding Light=#212121, Dark=#E0E0E0}"
-                                   BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0F172A}"/>
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"
+                                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"/>
                         </VerticalStackLayout>
 
                         <!-- Carga -->
@@ -61,14 +61,14 @@
                             <Label Text="Carga (kg)"
                                    FontSize="15"
                                    FontAttributes="Bold"
-                                   TextColor="{AppThemeBinding Light=#0D47A1, Dark=#90CAF9}"/>
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                             <Entry x:Name="LoadEntry"
                                    Placeholder="0.0"
                                    Keyboard="Numeric"
-                                   PlaceholderColor="{AppThemeBinding Light=#90CAF9, Dark=#90CAF9}"
+                                   PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
                                    FontSize="16"
-                                   TextColor="{AppThemeBinding Light=#212121, Dark=#E0E0E0}"
-                                   BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0F172A}"/>
+                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"
+                                   BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"/>
                         </VerticalStackLayout>
                     </Grid>
 
@@ -77,13 +77,13 @@
                         <Label Text="Foto do Equipamento (caminho)"
                                FontSize="15"
                                FontAttributes="Bold"
-                               TextColor="{AppThemeBinding Light=#0D47A1, Dark=#90CAF9}"/>
+                               TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                         <Entry x:Name="EquipmentPhotoEntry"
                                Placeholder="Opcional: caminho da foto..."
-                               PlaceholderColor="{AppThemeBinding Light=#90CAF9, Dark=#90CAF9}"
+                               PlaceholderColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
                                FontSize="16"
-                               TextColor="{AppThemeBinding Light=#212121, Dark=#E0E0E0}"
-                               BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0F172A}"/>
+                               TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"/>
                     </VerticalStackLayout>
 
                 </VerticalStackLayout>
@@ -95,23 +95,23 @@
                   Margin="0,10,0,20">
                 
                 <!-- Botão Cancelar -->
-              <Button Grid.Column="0"
+                              <Button Grid.Column="0"
                         Text="Cancelar"
                         FontSize="17"
                         FontAttributes="Bold"
-                     BackgroundColor="{AppThemeBinding Light=#757575, Dark=#9E9E9E}"
-                     TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                                                 BackgroundColor="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray600}}"
+                                                 TextColor="{StaticResource White}"
                         CornerRadius="10"
                         HeightRequest="55"
                         Clicked="OnCancelClicked"/>
 
                 <!-- Botão Salvar -->
-              <Button Grid.Column="1"
+                              <Button Grid.Column="1"
                         Text="Salvar"
                         FontSize="17"
                         FontAttributes="Bold"
-                     BackgroundColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}"
-                     TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                                                 BackgroundColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource Gray900}}"
+                                                 TextColor="{StaticResource White}"
                         CornerRadius="10"
                         HeightRequest="55"
                         Clicked="OnSaveClicked"/>

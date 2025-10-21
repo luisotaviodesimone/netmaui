@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="AppAcademia.ViewExercises"
              Title="ViewExercises">
     <ScrollView>
         <VerticalStackLayout Padding="15"
-                Spacing="15">
-         <Label Text="Meus Exercícios"
+                             Spacing="15">
+            <Label Text="Meus Exercícios"
                    FontSize="28"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
-             TextColor="{StaticResource Magenta}"
+                   TextColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}"
                    Margin="0,10,0,10"/>
 
-             <Frame BackgroundColor="{StaticResource Magenta}"
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
                    Padding="20"
                    Margin="0,0,0,5"
                    CornerRadius="12"
@@ -22,36 +21,35 @@
                 <VerticalStackLayout Spacing="10">
                     <HorizontalStackLayout HorizontalOptions="Center"
                                            Spacing="12">
-                    <Label Text="📊"
-                           FontSize="24"/>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                      <Span Text="Exercícios realizados hoje: "
-                          FontSize="17"
-                          TextColor="{StaticResource White}"/>
-                      <Span x:Name="TodayCountLabel"
-                          Text="0"
-                          FontSize="22"
-                          FontAttributes="Bold"
-                          TextColor="{StaticResource White}"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                        <Label Text="📊"
+                               FontSize="24"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Exercícios realizados hoje: "
+                                          FontSize="17"
+                                          TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
+                                    <Span x:Name="TodayCountLabel"
+                                          Text="0"
+                                          FontSize="22"
+                                          FontAttributes="Bold"
+                                          TextColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </HorizontalStackLayout>
 
                     <!-- Filtros por Data -->
-                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                    <Grid ColumnDefinitions="*, Auto"
+                            ColumnSpacing="10">
                         <DatePicker x:Name="FilterDatePicker"
-                                    DateSelected="OnDateSelected"
-                                    TextColor="{StaticResource White}"
-                                    BackgroundColor="Transparent"/>
-            <Button Grid.Column="1"
+                                    DateSelected="OnDateSelected"/>
+                        <Button Grid.Column="1"
                                 Text="Hoje"
                                 Clicked="OnTodayClicked"
                                 FontAttributes="Bold"
-                BackgroundColor="{StaticResource Magenta}"
-                TextColor="{StaticResource White}"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource Gray900}}"
+                                TextColor="{StaticResource White}"
                                 CornerRadius="8"/>
                     </Grid>
                 </VerticalStackLayout>
@@ -61,76 +59,79 @@
                             EmptyView="Nenhum exercício cadastrado ainda.">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-               <Frame Padding="18"
-                   Margin="0,8"
-                   BackgroundColor="{StaticResource White}"
-                   BorderColor="{StaticResource Magenta}"
+                        <Frame Padding="18"
+                               Margin="0,8"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"
                                CornerRadius="12"
                                HasShadow="True">
                             <VerticalStackLayout Spacing="12">
                                 <!-- Título do Exercício -->
-                    <Label Text="{Binding ExerciseType}"
+                                <Label Text="{Binding ExerciseType}"
                                        FontSize="20"
                                        FontAttributes="Bold"
-                        TextColor="{StaticResource MidnightBlue}"/>
+                                       TextColor="{AppThemeBinding Light={StaticResource Magenta}, Dark={StaticResource White}}"/>
 
                                 <!-- Box de Informações Principais -->
-                    <Frame BackgroundColor="{StaticResource Gray100}"
+                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource Gray100}, Dark={StaticResource Gray600}}"
                                        Padding="12"
                                        CornerRadius="8"
-                                       HasShadow="False"
-                        BorderColor="{StaticResource Gray300}">
+                                       HasShadow="False">
                                     <Grid ColumnDefinitions="*, *"
                                           RowDefinitions="Auto, Auto"
                                           ColumnSpacing="10"
                                           RowSpacing="8">
-                                        
+
                                         <!-- Repetições -->
-                                        <VerticalStackLayout Grid.Column="0" Grid.Row="0">
-                          <Label Text="Repetições"
+                                        <VerticalStackLayout Grid.Column="0"
+                                                Grid.Row="0">
+                                            <Label Text="Repetições"
                                                    FontSize="12"
-                              TextColor="{StaticResource Gray600}"
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"
                                                    FontAttributes="Bold"/>
                                             <Label Text="{Binding Repetitions}"
                                                    FontSize="18"
                                                    FontAttributes="Bold"
-                              TextColor="{StaticResource MidnightBlue}"/>
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                                         </VerticalStackLayout>
 
                                         <!-- Carga -->
-                                        <VerticalStackLayout Grid.Column="1" Grid.Row="0">
-                          <Label Text="Carga"
+                                        <VerticalStackLayout Grid.Column="1"
+                                                Grid.Row="0">
+                                            <Label Text="Carga"
                                                    FontSize="12"
-                              TextColor="{StaticResource Gray600}"
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"
                                                    FontAttributes="Bold"/>
                                             <Label Text="{Binding Load, StringFormat='{0:F1} kg'}"
                                                    FontSize="18"
                                                    FontAttributes="Bold"
-                              TextColor="{StaticResource MidnightBlue}"/>
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}"/>
                                         </VerticalStackLayout>
 
                                         <!-- Data -->
-                                        <VerticalStackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
-                          <Label Text="Data e Hora"
+                                        <VerticalStackLayout Grid.Column="0"
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="2">
+                                            <Label Text="Data e Hora"
                                                    FontSize="12"
-                              TextColor="{StaticResource Gray600}"
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"
                                                    FontAttributes="Bold"/>
                                             <Label Text="{Binding CreatedAt, StringFormat='{0:dd/MM/yyyy HH:mm}'}"
                                                    FontSize="15"
-                              TextColor="{StaticResource Gray500}"/>
+                                                   TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
                                         </VerticalStackLayout>
                                     </Grid>
                                 </Frame>
 
                                 <!-- Caminho da Foto -->
-                    <Label FontSize="13"
-                        TextColor="{StaticResource Gray500}"
+                                <Label FontSize="13"
+                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray200}}"
                                        Padding="5,0">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="📷 " FontSize="14"/>
+                                            <Span Text="📷 "
+                                                    FontSize="14"/>
                                             <Span Text="Foto: "
-                                                    FontAttributes="Bold"/>
+                                                  FontAttributes="Bold"/>
                                             <Span Text="{Binding EquipmentPhotoPath}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
