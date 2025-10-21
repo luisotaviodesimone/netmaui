@@ -3,35 +3,64 @@ using SQLite;
 
 namespace AppAcademia.Services;
 
-public class DatabaseService
+public sealed class DatabaseService
 {
-  private readonly SQLiteAsyncConnection _database;
+  private readonly SQLiteAsyncConnection _conn;
+  public SQLiteAsyncConnection Connection => _conn;
 
   public DatabaseService(string dbPath)
   {
-    _database = new SQLiteAsyncConnection(dbPath);
-    _database.CreateTableAsync<Exercise>().Wait();
+    _conn = new SQLiteAsyncConnection(
+            new SQLiteConnectionString(dbPath, storeDateTimeAsTicks: false));
+  }
+
+  public async Task InitAsync()
+  {
+
+    await _conn.CreateTableAsync<Exercise>();
+
+    var createTriggerSql = @"
+CREATE TRIGGER IF NOT EXISTS trg_exercises_updated_at
+AFTER UPDATE ON exercises
+BEGIN
+  UPDATE exercises
+    SET UpdatedAt = CURRENT_TIMESTAMP
+  WHERE rowid = NEW.rowid;
+END;";
+
+    await _conn.ExecuteAsync(createTriggerSql);
   }
 
   public Task<List<Exercise>> GetExercisesAsync()
   {
-    return _database.Table<Exercise>().ToListAsync();
+    return _conn.Table<Exercise>().ToListAsync();
+  }
+
+  public Task<List<Exercise>> GetExercisesByDateAsync(DateTime date)
+  {
+    var start = date.Date;
+    var end = start.AddDays(1);
+    // Query exercises where CreatedAt is within [start, end)
+    return _conn.Table<Exercise>()
+      .Where(e => e.CreatedAt >= start && e.CreatedAt < end)
+      .OrderByDescending(e => e.CreatedAt)
+      .ToListAsync();
   }
 
   public Task<int> SaveExerciseAsync(Exercise exercise)
   {
     if (exercise.Id != 0)
     {
-      return _database.UpdateAsync(exercise);
+      return _conn.UpdateAsync(exercise);
     }
     else
     {
-      return _database.InsertAsync(exercise);
+      return _conn.InsertAsync(exercise);
     }
   }
 
   public Task<int> DeleteExerciseAsync(Exercise exercise)
   {
-    return _database.DeleteAsync(exercise);
+    return _conn.DeleteAsync(exercise);
   }
 }

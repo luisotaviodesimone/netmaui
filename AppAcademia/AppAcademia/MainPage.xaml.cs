@@ -10,7 +10,10 @@ public partial class MainPage : TabbedPage
 	{
 		InitializeComponent();
 
-    IniciaDB(dbpath: Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AppAcademia.db3"));
+		var projectDir = Environment.CurrentDirectory;
+		var dbPath = Path.Combine(projectDir, "AppAcademia.db3");
+
+		IniciaDB(dbPath);
 		AtualizarLista();
 	}
 
@@ -20,9 +23,10 @@ public partial class MainPage : TabbedPage
 		var exercicios = await Database.GetExercisesAsync();
 	}
 
-	private static void IniciaDB(string dbpath)
+	private async static void IniciaDB(string dbpath)
 	{
 		Database = new DatabaseService(dbpath);
+		await Database.InitAsync();
 	}
 }
 
