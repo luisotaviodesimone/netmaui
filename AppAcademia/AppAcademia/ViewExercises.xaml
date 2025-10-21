@@ -57,10 +57,14 @@
 
             <CollectionView x:Name="ExercisesListView"
                             EmptyView="Nenhum exercício cadastrado ainda.">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="12"/>
+                </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="18"
-                               Margin="0,8"
+                               Margin="0,4"
                                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray950}}"
                                CornerRadius="12"
                                HasShadow="True">
@@ -122,28 +126,32 @@
                                     </Grid>
                                 </Frame>
 
-                                <!-- Caminho da Foto -->
-                                <Label FontSize="13"
-                                       TextColor="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray200}}"
-                                       Padding="5,0">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="📷 "
-                                                    FontSize="14"/>
-                                            <Span Text="Foto: "
-                                                  FontAttributes="Bold"/>
-                                            <Span Text="{Binding EquipmentPhotoPath}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                    <Label.Triggers>
-                                        <DataTrigger TargetType="Label"
+                                <!-- Foto do Equipamento -->
+                                <Frame Padding="0"
+                                       CornerRadius="8"
+                                       HasShadow="False"
+                                       BorderColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="📷 Foto do Equipamento"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               Padding="10,8,10,0"
+                                               TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray200}}"/>
+                                        
+                                        <Image Source="{Binding EquipmentPhotoPath}"
+                                               Aspect="AspectFit"
+                                               HeightRequest="200"
+                                               Margin="10,0,10,10"/>
+                                    </VerticalStackLayout>
+                                    <Frame.Triggers>
+                                        <DataTrigger TargetType="Frame"
                                                      Binding="{Binding EquipmentPhotoPath}"
                                                      Value="">
                                             <Setter Property="IsVisible"
                                                     Value="False"/>
                                         </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
+                                    </Frame.Triggers>
+                                </Frame>
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
